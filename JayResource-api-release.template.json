@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "apimServiceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/releases",
+      "name": "[concat(parameters('apimServiceName'), '/demo-conference-api;rev=2/8134b004-9aa2-420e-b187-102b6cdb9460')]",
+      "properties": {
+        "apiId": "/apis/demo-conference-api;rev=2"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/releases",
+      "name": "[concat(parameters('apimServiceName'), '/echo-api;rev=1/29edcbf6-0260-4a89-ab18-535e9a43f35a')]",
+      "properties": {
+        "apiId": "/apis/echo-api;rev=1"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/apis/releases",
+      "name": "[concat(parameters('apimServiceName'), '/test-api;rev=1/bdd4bfe1-e373-4392-8239-11271b140846')]",
+      "properties": {
+        "apiId": "/apis/test-api;rev=1"
+      }
+    }
+  ]
+}

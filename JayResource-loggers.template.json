@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "apimServiceName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/loggers",
+      "name": "[concat(parameters('apimServiceName'), '/jay')]",
+      "properties": {
+        "loggerType": "applicationInsights",
+        "credentials": {
+          "instrumentationKey": "{{Logger-Credentials--63518e01217d2015f0259ca2}}"
+        },
+        "isBuffered": true,
+        "resourceId": "/subscriptions/f3791362-a2d8-4605-9330-844863d78996/resourceGroups/Jay-APIM/providers/microsoft.insights/components/Jay"
+      }
+    },
+    {
+      "apiVersion": "2021-08-01",
+      "type": "Microsoft.ApiManagement/service/loggers",
+      "name": "[concat(parameters('apimServiceName'), '/jay-1')]",
+      "properties": {
+        "loggerType": "applicationInsights",
+        "description": "Test",
+        "credentials": {
+          "instrumentationKey": "{{Logger-Credentials--63518e82217d2015f0259ca6}}"
+        },
+        "isBuffered": true,
+        "resourceId": "/subscriptions/f3791362-a2d8-4605-9330-844863d78996/resourceGroups/Jay-APIM/providers/microsoft.insights/components/Jay"
+      }
+    }
+  ]
+}
